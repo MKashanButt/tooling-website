@@ -10,7 +10,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
@@ -19,6 +19,8 @@
         <link rel="stylesheet" href="{{asset('resources/css/app.css')}}">
         <script src="{{asset('resources/js/app.js')}}"></script>
     @endif
+
+    @stack('css')
 </head>
 
 <body class="font-sans antialiased">
@@ -35,12 +37,14 @@
         @endisset
 
         <!-- Page Content -->
-        <main>
+        <main class="p-2 py-4">
             {{ $slot }}
         </main>
 
         @include('partials._footer')
+        <x-dark-mode-toggle class="absolute bottom-4 right-4" />
     </div>
+    @stack('js')
 </body>
 
 </html>
